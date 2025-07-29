@@ -52,4 +52,20 @@ $conta = new ContaBancaria(
     3000.00
 );
 
-echo $conta->obterSaldo();
+echo $conta->obterSaldo(); // 0
+
+echo PHP_EOL;
+
+echo $conta->depositar(300.00);
+
+echo PHP_EOL;
+
+echo $conta->obterSaldo(); // 300
+
+echo PHP_EOL;
+
+echo $conta->sacar(150.00);
+
+echo PHP_EOL;
+
+echo $conta->obterSaldo(); // 150
