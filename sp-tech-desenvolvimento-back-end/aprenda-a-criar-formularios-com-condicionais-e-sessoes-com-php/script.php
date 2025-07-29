@@ -1,34 +1,30 @@
-<?php 
-
+<?php
+session_start();
 
 $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
-if(empty($nome)) {
-    echo ' O nome não pode estar vazio';
+if (empty($nome)) {
+    $_SESSION['mensagem de erro'] = 'O nome não pode estar vazio';
+    header('location: form.php');
     return;
-}
-
-if(strlen($nome) < 2) {
-    echo 'O nome deve conter no minino 2 caracteres';
+} else if (strlen($nome) < 2) {
+    $_SESSION['mensagem de erro'] = 'O nome deve conter no minino 2 caracteres';
+    header('location: form.php');
     return;
-}
-
-if(strlen($nome) > 40) {
-    echo 'O nome é muito extenso';
+} else if (strlen($nome) > 40) {
+    $_SESSION['mensagem de erro'] = 'O nome é muito extenso';
+    header('location: form.php');
     return;
-}
-
-
-if(!is_numeric($idade)) {
-    // echo 'Informe um número para idade';
-    echo $idade . " não é valido para idade";
+} else if (!is_numeric($idade)) {
+    $_SESSION['mensagem de erro'] = $idade . " não é valido para idade";
+    header('location: form.php');
     return;
 }
 
 
 
 var_dump([
-      $nome,
+    $nome,
     $idade
 ]);
